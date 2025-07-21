@@ -1,0 +1,220 @@
+/* General body styles */
+body {
+    margin: 0;
+    padding: 20px;
+    background-color: #121212;
+    color: #fff;
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+}
+.sidebar {
+      position: fixed;
+      right: 0;
+      top: 0;
+      height: 100%;
+      width: 60px;
+      background-color: #050505;
+      color:grey;
+      overflow-x: hidden;
+      transition: width 0.4s ease;
+      z-index: 999;
+      box-shadow: -2px 0 6px rgba(107, 106, 106, 0.1);
+    }
+     .sidebar:hover {
+      width: 250px;
+    }
+    .sidebar ul {
+      list-style: none;
+      padding: 20px;
+    }
+
+    .sidebar li {
+      padding: 15px 10px;
+      margin: 5px 0;
+      transition: background 0.3s ease;
+      display: flex;
+      align-items: center;
+    }
+ .sidebar li:hover {
+      background-color: #b89787;
+      cursor: pointer;
+    }
+
+    .sidebar i {
+      font-size: 20px;
+      min-width: 40px;
+      text-align: center;
+      color: #faf4f4;
+    }
+
+    .sidebar .text {
+      font-size: 16px;
+      font-weight: 500;
+      color: pink;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .sidebar:hover .text {
+      opacity: 1;
+      margin-left: 10px;
+    }
+
+/* Menu container styles */
+.menu-container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 30px;
+    border: 3px solid #ffd700;
+    background-color: #111;
+}
+.menu-container button{
+  background-color: purple;
+  color: white;
+  height: auto;
+  border-radius: 10px;
+  padding: 14px;
+}
+
+.menu-container button:hover{
+  background-color: rgb(250, 13, 250);
+  color: rgb(216, 207, 207);
+  cursor: pointer;
+  padding: 18px;
+}
+/* Menu title styles */
+.menu-title {
+    font-size: 3em;
+    color: #ffd700;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+/* Image styles */
+.images {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.images img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #ffd700;
+}
+
+/* Category styles */
+.category {
+    flex: 1;
+    background: #222;
+    padding: 15px;
+    border: 1px solid #444;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.category h3 {
+    background-color: #ffd700;
+    color: #000;
+    text-align: center;
+    margin: -15px -15px 15px -15px;
+    padding: 10px 0;
+    font-size: 1.3em;
+}
+
+/* Item styles */
+.item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px dotted #666;
+}
+
+.item:last-child {
+    border-bottom: none;
+}
+
+.item span:last-child {
+    color: #ffd700;
+}
+
+/* Menu item styles */
+.menu-item {
+  
+    display: inline-block;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    background-color: #1f1f1f;
+    color: #fff;
+    border: 1px solid #333;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.menu-item:hover {
+    background-color: #333;
+    transform: scale(1.05);
+}
+.qty-input {
+  background-color: #ffd700;
+  color: #1f1f1f;
+  border-radius: 30px;
+      width: 40px;
+      text-align: center;
+      padding:  5px 0px;
+      justify-content: center;
+    }
+/* Order section styles */
+.order-section {
+    margin-top: 60px;
+    padding: 20px;
+    border-top: 1px solid #444;
+    background-color: #1c1c1c;
+}
+
+/* Selected item styles */
+#selected-item {
+    font-size: 18px;
+    color: #90ee90;
+}
+
+/* Additional styles for headings */
+h1 {
+    font-size: 36px;
+    color: #ffd700;
+    margin-bottom: 30px;
+}
+
+
+.category span {
+    color: #fcfbfa;
+  
+}
+.item label {
+    display: flex;
+  
+    gap: 10px;
+    color: #0a0a0a;
+    font-size: 10px;
+}
+
+.item input[type="checkbox"] {
+    transform: scale(1.2);
+    accent-color: #871896;
+  
+    
+}
+
+/* Flexbox for item grid */
+.item-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}

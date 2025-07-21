@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Center</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+   <link rel="stylesheet" href="support.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-...." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Main Container -->
+    <div class="flex relative">
+        
+         <div class="sidebar">
+    <ul>
+        <li><i class="fas fa-bars"></i></li>
+      <li><i class="fas fa-home"></i><a href="index.html"><span class="text">Home</span></a></li>
+      <li><i class="fas fa-utensils"></i><a href="menu.html "><span class="text">Menu</span></a></li>
+      <li><i class="fas fa-shopping-cart"></i><a href="order.html"><span class="text">Cart</span></a></li>
+      <li><i class="fas fa-user-friends"></i><a href="about.html"><span class="text">About</span></a></li>
+      <li><i class="fas fa-headset"></i><a href="support.html"><span class="text">Support</span></a></li>
+    </ul>
+  </div>
+
+        <!-- Main Content -->
+        <div id="content" class="content-expanded flex-1">
+            <!-- Header -->
+            <header class="bg-white shadow-sm">
+                <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex justify-between items-center">
+                    
+                    <div class="flex items-center space-x-4">
+                       
+                        <div class="relative">
+                            <button class="flex items-center space-x-2 focus:outline-none">
+                                <img src="logo.jpg" alt="User profile avatar with blue background and white initials" class="rounded-full h-8 w-8 border border-gray-200">
+                                <span class="text-gray-600">Couple's Café</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <main class="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
+                <!-- Page Title -->
+                <div class="mb-8">
+                    <h1 class="text-3xl font-bold text-gray-900">Frequently Asked Questions</h1>
+                    <p class="text-gray-600 mt-2">Find answers to common questions about our products and services.</p>
+                </div>
+
+                <!-- Search Box -->
+                <div class="mb-8">
+                    <div class="relative max-w-xl">
+                        <input type="text" placeholder="Search FAQs..." class="w-full pl-4 pr-10 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                        <button class="absolute right-3 top-3 text-gray-500 hover:text-blue-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- FAQ Categories -->
+                <div class="mb-8">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-4">Categories</h2>
+                    <div class="flex flex-wrap gap-2">
+                        <button class="px-4 py-2 bg-blue-600 text-white rounded-full text-sm font-medium">All Questions</button>
+                       
+                    </div>
+                </div>
+
+                <!-- FAQ List -->
+                <!-- FAQ List -->
+                <!-- This section displays a list of FAQs -->
+                <!-- Each FAQ has a title, a toggle button to show/hide the answer, and the answer itself -->
+                <!-- The toggle button is a flex div with a cursor pointer -->
+                <!-- The answer is a hidden div with the text-gray-600 class -->
+                <!-- The toggleFAQ function is called when the toggle button is clicked -->
+                <!-- It toggles the 'active' class on the FAQ element and the corresponding answer element -->
+                <div class="space-y-4">
+                    <!-- FAQ 1 -->
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <div class="flex justify-between items-center cursor-pointer question" onclick="toggleFAQ(1)">
+                            <!-- Title -->
+                            <h3 class="font-medium text-gray-900">What payment methods do you accept?</h3>
+                            <!-- Toggle button -->
+                            <!--
+                                This is an SVG element that displays a downward-pointing chevron icon.
+                                The icon is used as a toggle button to show/hide the answer to the FAQ.
+                                The `fill="none"` attribute indicates that the icon will not be filled with a color.
+                                The `stroke="currentColor"` attribute indicates that the icon will be outlined with the current text color (which is gray in this case).
+                                The `stroke-linecap="round"` and `stroke-linejoin="round"` attributes indicate that the corners of the icon will be rounded.
+                                The `stroke-width="2"` attribute indicates that the outline of the icon will be 2 pixels wide.
+                                The `d` attribute specifies the path of the icon. In this case, it consists of three connected lines: a vertical line from the top to the middle, a horizontal line from the middle to the right, and a vertical line from the middle to the bottom.
+                            -->
+                        </div>
+                        <!-- Answer -->
+                        <div class="faq-item" id="faq-1">
+                            <p class="text-gray-600 mt-2">
+                                <!-- Answer text -->
+                                We accept all major credit cards (Visa, MasterCard, American Express, Discover), as well as PayPal and Apple Pay. For enterprise customers, we also support wire transfers. All transactions are processed securely with 256-bit encryption.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 2 -->
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <div class="flex justify-between items-center cursor-pointer question" onclick="toggleFAQ(2)">
+                            <!-- Title -->
+                            <h3 class="font-medium text-gray-900">How can I upgrade my plan?</h3>
+                            <!-- Toggle button -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </div>
+                        <!-- Answer -->
+                        <div class="faq-item" id="faq-2">
+                            <p class="text-gray-600 mt-2">
+                                <!-- Answer text -->
+                                You can upgrade your plan at any time by going to the "Account Settings" page and selecting "Change Plan." Choose your desired plan and confirm the changes. Any prorated charges or credits will be automatically calculated.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 3 -->
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <div class="flex justify-between items-center cursor-pointer question" onclick="toggleFAQ(3)">
+                            <!-- Title -->
+                            <h3 class="font-medium text-gray-900">Is there a mobile app available?</h3>
+                            <!-- Toggle button -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </div>
+                        <!-- Answer -->
+                        <div class="faq-item" id="faq-3">
+                            <p class="text-gray-600 mt-2">
+                                <!-- Answer text -->
+                                Yes! We have native apps for both iOS and Android devices. You can find them in the App Store and Google Play Store by searching for our product name. The mobile app offers all the core functionality of the web version.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Section -->
+                <div class="mt-12 border-t border-gray-200 pt-8">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-4">Still need help?</h2>
+                    <p class="text-gray-600 mb-6">Can't find what you're looking for? Our support team is ready to help.</p>
+                   <a href="https://wa.me/7207651456"> <button class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium">
+                        Contact Support</a>
+                    </button>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+      
+
+        // FAQ toggle functionality
+        function toggleFAQ(id) {
+            const faq = document.getElementById(`faq-${id}`);
+            const icon = faq.previousElementSibling.querySelector('svg');
+            
+            faq.classList.toggle('active');
+            
+            if (faq.classList.contains('active')) {
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+        // toggleFAQ function:
+        // - gets the corresponding FAQ element
+        // - gets the corresponding icon element
+        // - toggles the 'active' class on the FAQ element
+        // - toggles the rotation of the icon element between 0 and 180 degrees
+        //   - when the FAQ is open, the icon is rotated 180 degrees (to point upwards)
+        //   - when the FAQ is closed, the icon is rotated 0 degrees (to point downwards)
+
+        // Initialize some FAQs as open when needed
+        document.addEventListener('DOMContentLoaded', () => {
+            // You can initialize some FAQs as open by default if desired
+            // For example:
+            // toggleFAQ(1);
+        });
+    </script>
+</body>
+</html>

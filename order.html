@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Cart</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-...." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fce4ec;
+      padding: 30px;
+      display: flex;
+      justify-content: center;
+    }
+    .sidebar {
+      position: fixed;
+      right: 0;
+      top: 0;
+      height: 100%;
+      width: 60px;
+      background-color: #402218;
+      color: white;
+      overflow-x: hidden;
+      transition: width 0.4s ease;
+      z-index: 999;
+      box-shadow: -2px 0 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .sidebar:hover {
+      width: 250px;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 20px;
+    }
+
+    .sidebar li {
+      padding: 15px 10px;
+      margin: 5px 0;
+      transition: background 0.3s ease;
+      display: flex;
+      align-items: center;
+    }
+
+    .sidebar li:hover {
+      background-color: #59382b;
+      cursor: pointer;
+    }
+
+    .sidebar i {
+      font-size: 20px;
+      min-width: 40px;
+      text-align: center;
+      color: #ffcbcb;
+    }
+
+    .sidebar .text {
+      font-size: 16px;
+      font-weight: 500;
+      color: #f17070;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .sidebar:hover .text {
+      opacity: 1;
+      margin-left: 10px;
+    }
+
+    .cart {
+      background-color: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      width: 350px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h3 {
+      margin-top: 0;
+      font-size: 22px;
+    }
+
+    .cart-item {
+      margin-bottom: 10px;
+    }
+
+    .total {
+      font-weight: bold;
+      font-size: 18px;
+      margin-top: 15px;
+      color: green;
+    }
+
+    h4 {
+      margin-top: 25px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #660b79;
+    }
+    .button{
+       margin-top: 20px;
+      width: 100%;
+      padding: 10px;
+      background-color: #8b25a0;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .button:hover{
+      background-color: #007bff;
+    }
+    @keyframes move {
+      0% {
+        transform: translateY(-100px);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cart">
+    <h3>Cart</h3>
+    <!-- Container to display selected items -->
+    <div id="items"></div>
+    <!-- Display total price -->
+    <div class="total">Total: ₹<span id="total">0</span></div>
+    <!-- Sidebar for navigation -->
+    <div class="sidebar">
+      <ul>
+        <li><i class="fas fa-bars"></i></li>
+        <li><i class="fas fa-home"></i><a href="index.html"><span class="text">Home</span></a></li>
+        <li><i class="fas fa-utensils"></i><a href="menu.html"><span class="text">Menu</span></a></li>
+        <li><i class="fas fa-shopping-cart"></i><a href="order.html"><span class="text">Cart</span></a></li>
+        <li><i class="fas fa-user-friends"></i><a href="about.html"><span class="text">About</span></a></li>
+        <li><i class="fas fa-headset"></i><a href="support.html"><span class="text">Support</span></a></li>
+      </ul>
+    </div>
+    <!-- Payment options -->
+    <h4>Payment Mode</h4>
+    <label><input type="radio" name="payment" value="Credit Card"> Credit Card</label>
+    <label><input type="radio" name="payment" value="UPI"> UPI</label>
+    <label><input type="radio" name="payment" value="Pay using Cash"> Cash </label>
+    <!-- Button to place order -->
+    <button onclick="placeOrder()">Place order</button>
+    <br>
+    <!-- Button to cancel order and return to menu -->
+    <a href="menu.html">
+      <button class="button">Cancel order</button>
+    </a>
+  </div>
+
+  <script>
+    // Function to get URL parameter by name
+    function getUrlParameter(name) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
+    }
+
+    // Function to display cart items
+    function displayCart() {
+      const data = getUrlParameter('data');
+      const itemsContainer = document.getElementById('items');
+      const totalSpan = document.getElementById('total');
+
+      // Display message if no items are selected
+      if (!data) {
+        itemsContainer.innerHTML = "<p>No items selected.</p>";
+        return;
+      }
+
+      // Parse and display selected items from URL parameter
+      // Parse selected items from URL data and initialize total
+      const selectedItems = JSON.parse(decodeURIComponent(data));
+      let total = 0;
+
+      // Iterate over each item to display in cart
+      selectedItems.forEach(itemObj => {
+        // Split item name and price from 'name - ₹price' format
+        const [name, priceStr] = itemObj.name.split(' - ₹');
+        const price = parseInt(priceStr);
+
+        // Get item quantity, default to 1 if not specified
+        const qty = parseInt(itemObj.quantity) || 1;
+        const subtotal = price * qty;
+
+        // Create a div element for displaying the item in the cart
+        const div = document.createElement("div");
+        div.className = "cart-item";
+        div.innerText = `${name} × ${qty} = ₹${subtotal}`;
+        itemsContainer.appendChild(div);
+
+        // Update the total price
+        total += subtotal;
+      });
+
+      // Update total price display
+      totalSpan.innerText = total;
+    }
+
+    // Function to handle order placement
+    function placeOrder() {
+      const selectedPayment = document.querySelector('input[name="payment"]:checked');
+      if (selectedPayment) {
+        alert(`Order placed using: ${selectedPayment.value}`);
+      } else {
+        alert('Please select a payment method.');
+      }
+    }
+
+    // Initialize cart display on page load
+    window.onload = displayCart;
+  </script>
+
+</body>
+</html>
+
